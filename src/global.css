@@ -1,0 +1,272 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300..800&display=swap');
+
+:root {
+  --blue-50: #DFDFF0;
+  --blue-75: #dfdff2;
+
+  --violet-200: #5542ff;
+  --violet-300: #5724ff;
+
+  --yellow-100: #EDFF67;
+  --yellow-300: #8e983f;
+
+  --gray-300: #C5C5D5;
+  --gray-400: #868691;
+}
+
+@theme {
+  --font-zentry: 'zentry', sans-serif;
+  --font-general: 'general', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+
+  --color-blue-50: var(--blue-50);
+  --color-blue-75: var(--blue-75);
+
+  --color-violet-200: var(--violet-200);
+  --color-violet-300: var(--violet-300);
+
+  --color-yellow-100: var(--yellow-100);
+  --color-yellow-300: var(--yellow-300);
+
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+
+  --text-xxs: 0.625rem; /* 10px */
+}
+
+body {
+  @apply font-general w-dvw bg-blue-50 select-none overflow-x-hidden;
+}
+
+button {
+  @apply focus:outline-none;
+}
+
+@layer base {
+  @font-face {
+    font-family: "zentry";
+    src: url("/fonts/zentry-regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "general";
+    src: url("/fonts/general.woff2") format("woff2");
+  }
+}
+
+@layer utilities {
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  /* 剪裁一個覆蓋整個元素的矩形 */
+  .mask-rect-clip {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .mask-rect-clip-2 {
+    clip-path: polygon(0 0, 90% 0, 100% 80%, 15% 100%);
+  }
+
+  .sword-man-clip-path {
+    clip-path: polygon(22% 4%, 89% 20%, 65% 78%, 0 75%);
+
+    @variant md {
+      clip-path: polygon(18% 4%, 89% 15%, 65% 90%, 0 85%);
+    }
+  }
+
+  .contact-clip-path-1 {
+    clip-path: polygon(25% 0%, 74% 0, 69% 64%, 34% 73%);
+  }
+
+  .contact-clip-path-2 {
+    clip-path: polygon(28% 10%, 85% 40%, 80% 90%, 8% 60%);
+    @variant md {
+      clip-path: polygon(32% 15%, 72% 30%, 60% 100%, 10% 64%);
+    }
+  }
+
+  .transform-matrix-3d {
+    transform: matrix3d(1, -0.236768, 0, 0.0037678, 0, 0.821053, 0, 0, 0, 0, 1, 0, 36.0247, -11.245, 0, 1);
+  }
+
+  .transform-matrix-3d-2 {
+    transform: matrix3d(1, -0.2, 0, -0.002, -0.2, 0.664847, 0, -0.0009438, 0, 0, 1, 0, -10.7119, 20.3935, 0, 1);
+  }
+
+  .special-font, b {
+    font-family: "Zentry";
+    font-feature-settings: "ss01" on; /* 替換特殊字體 */
+  }
+
+  .hero-heading {
+    @apply font-zentry uppercase font-medium right-8 lg:right-12 text-9xl lg:text-[11rem];
+  }
+
+  @container parent (min-width: 0) {
+    .dynamic-text {
+      font-size: 72cqw;
+    }
+
+    .dynamic-text-2 {
+      font-size: 60cqw;
+    }
+  }
+
+  .btn-bounce:hover {
+    animation: shrink-bounce 0.65s ease-in-out;
+  }
+
+  @keyframes shrink-bounce {
+    0% {
+      transform: scaleX(1);
+      transform: skewX(0deg);
+      border-radius: 50px;
+    }
+    20% {
+      transform: scaleX(0.95);
+    }
+    40% {
+      transform: scaleX(0.85);
+    }
+    100% {
+      transform: scaleX(0.9);
+      transform: skewX(6deg);
+      border-radius: 6px;
+    }
+  }
+
+  .indicator-line {
+    @apply h-1 w-px rounded-full bg-white transition-all duration-200 ease-in-out;
+  }
+
+  .indicator-line.active {
+    animation: indicator-line 0.5s ease infinite;
+    animation-delay: calc(var(--animation-order) * 0.1s);
+  }
+
+  @keyframes indicator-line {
+    0% {
+      height: 4px;
+      transform: translateY(-0px);
+    }
+    50% {
+      height: 16px;
+      transform: translateY(-4px);
+    }
+    100% {
+      height: 4px;
+      transform: translateY(-0px);
+    }
+  }
+
+  /* From Uiverse.io by G4b413l */
+  .three-body {
+    --uib-size: 35px;
+    --uib-speed: 0.8s;
+    --uib-color: #5d3fd3;
+    position: relative;
+    display: inline-block;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+  }
+
+  .three-body__dot {
+    position: absolute;
+    height: 100%;
+    width: 30%;
+  }
+
+  .three-body__dot:after {
+    content: "";
+    position: absolute;
+    height: 0%;
+    width: 100%;
+    padding-bottom: 100%;
+    background-color: var(--uib-color);
+    border-radius: 50%;
+  }
+
+  .three-body__dot:nth-child(1) {
+    bottom: 5%;
+    left: 0;
+    transform: rotate(60deg);
+    transform-origin: 50% 85%;
+  }
+
+  .three-body__dot:nth-child(1)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite ease-in-out;
+    animation-delay: calc(var(--uib-speed) * -0.3);
+  }
+
+  .three-body__dot:nth-child(2) {
+    bottom: 5%;
+    right: 0;
+    transform: rotate(-60deg);
+    transform-origin: 50% 85%;
+  }
+
+  .three-body__dot:nth-child(2)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15)
+      ease-in-out;
+  }
+
+  .three-body__dot:nth-child(3) {
+    bottom: -5%;
+    left: 0;
+    transform: translateX(116.666%);
+  }
+
+  .three-body__dot:nth-child(3)::after {
+    top: 0;
+    left: 0;
+    animation: wobble2 var(--uib-speed) infinite ease-in-out;
+  }
+
+  @keyframes spin78236 {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes wobble1 {
+    0%,
+    100% {
+      transform: translateY(0%) scale(1);
+      opacity: 1;
+    }
+
+    50% {
+      transform: translateY(-66%) scale(0.65);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes wobble2 {
+    0%,
+    100% {
+      transform: translateY(0%) scale(1);
+      opacity: 1;
+    }
+
+    50% {
+      transform: translateY(66%) scale(0.65);
+      opacity: 0.8;
+    }
+  }
+}
