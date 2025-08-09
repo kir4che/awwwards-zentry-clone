@@ -47,7 +47,7 @@ const Footer = () => {
   const titleRef = useRef(null);
 
   return (
-    <footer className="w-dvw bg-violet-200 py-4 text-black">
+    <footer className="bg-violet-200 border py-4 text-black">
       <Text3DHover ref={titleRef} containerClass="text-center">
         <h1 className={`
           font-zentry text-[32vw] leading-[28vw] font-medium tracking-wide
@@ -70,14 +70,14 @@ const Footer = () => {
           {footerItems.map((column) => (
             <div className="min-w-32" key={column.title}>
               <h2 className="mb-4 text-xxs uppercase">{column.title}</h2>
-              <ul className="space-y-1 font-roboto">
+              <ul className="-space-y-1 font-roboto">
                 {column.links.map((link) => (
                   <li key={link.label}>
                     <a href={link.href} className={`
-                      group btn-bounce inline-block rounded-md text-xl
+                      group py-2 btn-bounce inline-block rounded-md text-xl
                       tracking-wide transition-all duration-150
                       hover:-ml-4 hover:scale-x-90 hover:skew-x-6 hover:bg-black
-                      hover:px-4 hover:py-2 hover:text-violet-200
+                      hover:px-4 hover:text-violet-200
                       md:text-lg
                     `}>
                       <span className={`

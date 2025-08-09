@@ -15,7 +15,7 @@ const AudioIndicator = ({ isPlaying, onToggle }) => {
     <button
       type="button"
       onClick={onToggle}
-      className="mr-2 -mb-2 ml-8 flex cursor-pointer items-center space-x-0.5"
+      className="sm:flex hidden mr-2 -mb-2 ml-8 cursor-pointer items-center space-x-0.5"
     >
       <audio
         ref={audioRef}

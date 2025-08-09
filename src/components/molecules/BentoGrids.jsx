@@ -45,6 +45,7 @@ const BentoGrids = () => {
           p-4
           md:ms-32
           lg:ms-42
+          z-10
         `} style={{ containerType: 'size', containerName: 'parent' }}>
           <div className="flex size-full flex-col justify-between">
             <p className={`
@@ -133,7 +134,7 @@ const BentoGrids = () => {
           />
         </div>
         <div ref={cardRef} className={`
-          ms-64 aspect-square rounded-lg border-[0.5px] border-white/30 bg-black
+          ms-42 aspect-square rounded-lg border-[0.5px] border-white/30 bg-black
           p-4
           md:ms-0 md:me-42
         `}>

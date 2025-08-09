@@ -78,7 +78,6 @@ const NavMenu = ({ items }) => {
             relative ms-4 px-3.5 py-1.5 font-general text-xs font-medium
             text-blue-50 uppercase
             hover:text-black
-            dark:hover:text-white
           `}
           onMouseEnter={() => animateToPosition(idx)}
         >

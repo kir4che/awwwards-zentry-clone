@@ -23,129 +23,34 @@ const Home = () => {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    // #story
-    ScrollTrigger.create({
-      trigger: "#story",
-      start: "bottom 50%",
-      scrub: true,
-      onEnter: () => {
-        gsap.to(containerRef.current, {
-          backgroundColor: "var(--yellow-100)",
-          color: "black",
-          duration: 0,
-        });
-        gsap.to("#animated-text", {
-          color: "black",
-          duration: 0,
-        });
-        gsap.to("#story button", {
-          backgroundColor: "black",
-          color: "var(--blue-75)",
-          duration: 0,
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(containerRef.current, {
-          backgroundColor: "black",
-          color: "var(--blue-50)",
-          duration: 0,
-        });
-        gsap.to("#animated-text", {
-          color: "#white",
-          duration: 0,
-        });
-        gsap.to("#story button", {
-          backgroundColor: "var(--blue-75)",
-          color: "black",
-          duration: 0,
-        });
-      }
-    });
-    // #benefits
-    ScrollTrigger.create({
-      trigger: "#benefits",
-      start: "bottom 80%",
-      scrub: true,
-      onEnter: () => {
-        gsap.to(containerRef.current, {
-          backgroundColor: "var(--blue-75)",
-          color: "black",
-          duration: 0,
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(containerRef.current, {
-          backgroundColor: "var(--yellow-100)",
-          color: "black",
-          duration: 0,
-        });
-      }
-    });
-    // #mission
-    ScrollTrigger.create({
-      trigger: "#mission",
-      start: "bottom 30%",
-      scrub: true,
-      onEnter: () => {
-        gsap.to(containerRef.current, {
-          backgroundColor: "black",
-          color: "var(--blue-50)",
-          duration: 0,
-        });
-        gsap.to("#animated-text", {
-          color: "var(--blue-50)",
-          duration: 0,
-        });
-        gsap.to("#mission button", {
-          backgroundColor: "var(--blue-75)",
-          color: "black",
-          duration: 0,
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(containerRef.current, {
-          backgroundColor: "var(--blue-75)",
-          color: "black",
-          duration: 0,
-        });
-        gsap.to("#animated-text", {
-          color: "black",
-          duration: 0,
-        });
-        gsap.to("#mission button", {
-          backgroundColor: "black",
-          color: "var(--blue-75)",
-          duration: 0,
-        });
-      }
-    });
-    // #partners
-    ScrollTrigger.create({
-      trigger: "#partners",
-      start: "bottom 30%",
-      scrub: true,
-      onEnter: () => {
-        gsap.to(containerRef.current, {
-          backgroundColor: "var(--blue-75)",
-          color: "black",
-          duration: 0,
-        });
-        gsap.to("li", {
-          color: "black",
-          duration: 0,
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(containerRef.current, {
-          backgroundColor: "black",
-          color: "var(--blue-50)",
-          duration: 0,
-        });
-        gsap.to("li", {
-          color: "var(--blue-50)",
-          duration: 0,
-        });
-      }
+    const sections = [
+      { id: 'story', bg: 'black', color: 'var(--blue-50)' },
+      { id: 'benefits', bg: 'var(--yellow-100)', color: 'black' },
+      { id: 'mission', bg: 'var(--blue-75)', color: 'black' },
+      { id: 'stats-overview', bg: 'black', color: 'var(--blue-50)' },
+      { id: 'partners', bg: 'black', color: 'var(--blue-50)' },
+      { id: 'updates', bg: 'var(--blue-75)', color: 'black' }
+    ];
+
+    sections.forEach((section) => {
+      ScrollTrigger.create({
+        trigger: `#${section.id}`,
+        start: "top 65%",
+        end: "bottom center",
+        scrub: true,
+        onEnter: () => {
+          gsap.set(containerRef.current, {
+            backgroundColor: section.bg,
+            color: section.color
+          });
+        },
+        onEnterBack: () => {
+          gsap.set(containerRef.current, {
+            backgroundColor: section.bg,
+            color: section.color
+          });
+        }
+      });
     });
   }, [containerRef]);
 

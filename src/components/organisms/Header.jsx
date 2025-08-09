@@ -35,17 +35,17 @@ const Header = () => {
   }, { dependencies: [isVisible], scope: navRef });
 
   return (
-    <header id="header" className="fixed inset-x-0 top-0 z-50">
+    <header className="fixed w-dvw inset-x-0 top-0 z-50">
       <nav
         ref={navRef}
         className={clsx(
           `
-            mx-auto mt-2 flex w-full max-w-[95vw] items-center justify-between
-            border px-2 py-1.5 transition-colors delay-75 duration-300
+            mx-auto sm:mt-2 flex w-full sm:max-w-[95vw] items-center justify-between
+            border px-2 py-3 sm:py-1.5 transition-colors delay-75 duration-300
             ease-in-out
             xl:max-w-[96vw] xl:px-4
           `, {
-            "rounded-lg border-white/15 bg-black": scrollY > 0,
+            "sm:rounded-lg sm:border-white/15 bg-black": scrollY > 0,
             "border-none": scrollY <= 0,
             "hidden": !isVisible,
           }

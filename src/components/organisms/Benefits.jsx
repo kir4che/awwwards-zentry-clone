@@ -69,7 +69,7 @@ const Benefits = () => {
     const viewportCenter = window.innerHeight / 2;
 
     // 當 section 中點接近 viewport 中點範圍內才觸發
-    const isCenter = Math.abs(sectionCenter - viewportCenter) < 150;
+    const isCenter = Math.abs(sectionCenter - viewportCenter) < 80;
 
     if (isCenter && !isInSection) {
       // 根據 scroll 方向，重置 List 項目。
@@ -164,7 +164,7 @@ else if (direction === 'up' && expandedIdx !== ListItems.length - 1) setExpanded
             textClass="text-sm md:text-xs"
           />
         </div>
-        <ul className="flex flex-col gap-y-5">
+        <ul id='benefits-list' className="flex flex-col gap-y-5">
           {ListItems.map((item, idx) => {
             const isExpanded = idx === expandedIdx;
             return (
